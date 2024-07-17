@@ -1,0 +1,25 @@
+:root {
+  --body: #1d1d1d;
+  --switcher: #ffffff;
+  --primary: #262626;
+  --hover-primary: #2f2f2f;
+  --b-color: #4d4d4d;
+  --t-color: #ffffff;
+  --confirmbtn-color: #fa7272;
+  --hover-confirmbtn-color: #ff8888;
+  --cancelbtn-color: #ffffff;
+  --cancelbtn-text-color: #2d2d2d;
+}
+
+[data-theme='light'] {
+  --body: #550086;
+  --switcher: #1f2937;
+  --primary: #ffffff;
+  --hover-primary: #f0f0f0;
+  --b-color: #cccccc;
+  --t-color: #000000;
+  --confirmbtn-color: #fa7272;
+  --hover-confirmbtn-color: #ff8888;
+  --cancelbtn-color: #000000;
+  --cancelbtn-text-color: #ffffff;
+}
