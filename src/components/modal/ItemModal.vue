@@ -23,7 +23,7 @@
       Удалить предмет
     </button>
 
-    <!-------- Modal --------->
+    <!-------- Delete Modal --------->
     <div
       v-if="showConfirmation"
       class="absolute p-[30px] flex flex-col items-center bottom-0 w-full border-t-[1px] border-b-color bg-primary"
