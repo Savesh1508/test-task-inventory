@@ -9,13 +9,13 @@
         alt="img"
       />
     </div>
-    <div class="flex-1 w-full px-[34px] mt-[30px] mb-[36px]">
-      <div class="h-[39px] bg-gray-700 mb-[36px] rounded-[8px]"></div>
-      <div class="h-[15px] bg-gray-700 mb-[24px] rounded-[4px]"></div>
-      <div class="h-[15px] bg-gray-700 mb-[24px] rounded-[4px]"></div>
-      <div class="h-[15px] bg-gray-700 mb-[24px] rounded-[4px]"></div>
-      <div class="h-[15px] bg-gray-700 mb-[24px] rounded-[4px]"></div>
-      <div class="h-[15px] bg-gray-700 mb-[36px] rounded-[4px]"></div>
+    <div class="flex-1 w-full px-[34px] mt-[30px] mb-[36px] flex flex-col items-center">
+      <h3 class="text-white text-[22px] font-semibold mb-[30px]">Lorem, ipsum.</h3>
+      <p class="text-center text-[18px] text-[#ffffff90]">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis non obcaecati
+        molestiae, natus possimus dolores veniam fugiat eveniet excepturi nulla fugit nemo impedit
+        voluptate ad assumenda? Dolore ullam quo esse?
+      </p>
     </div>
   </div>
 </template>
