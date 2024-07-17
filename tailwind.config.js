@@ -2,7 +2,12 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        primary: '#262626', // дефолтный цвет страницы
+        'b-color': '#4d4d4d' // цвет обводки
+      }
+    }
   },
   plugins: []
 }
