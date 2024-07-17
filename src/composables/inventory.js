@@ -6,7 +6,11 @@ export function useInventory() {
   const store = useInventoryStore()
 
   const { inventory } = storeToRefs(store)
-  const { removeFromInventory, saveStorage } = useInventoryStore()
+  const { removeFromInventory, saveStorage, moveItems } = useInventoryStore()
+
+  const moveItem = (fromIndex, toIndex) => {
+    moveItems(fromIndex, toIndex)
+  }
 
   onMounted(() => {
     saveStorage()
@@ -14,6 +18,7 @@ export function useInventory() {
 
   return {
     inventory,
-    removeFromInventory
+    removeFromInventory,
+    moveItem
   }
 }
