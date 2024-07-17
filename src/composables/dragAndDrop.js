@@ -1,5 +1,10 @@
 export function useDragAndDrop(moveItem) {
   const dragStart = (item, index, event) => {
+    if (!item.name) {
+      // Перетаскиваемая ячейка пустая
+      event.preventDefault()
+      return
+    }
     event.dataTransfer.setData('index', index.toString())
   }
 

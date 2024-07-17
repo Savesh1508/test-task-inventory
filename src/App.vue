@@ -2,7 +2,7 @@
   <div class="px-5">
     <div class="flex justify-center my-9">
       <Profile />
-      <div class="overflow-hidden w-[800px] h-[750px] rounded-[12px] border-[1px] border-b-color">
+      <div class="overflow-hidden w-[800px] h-[750px] rounded-[12px] ring-[1px] ring-b-color">
         <Inventory />
       </div>
     </div>
