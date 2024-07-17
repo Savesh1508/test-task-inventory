@@ -5,8 +5,8 @@ import { onMounted } from 'vue'
 export function useInventory() {
   const store = useInventoryStore()
 
-  const { inventory } = storeToRefs(store)
-  const { removeFromInventory, saveStorage, moveItems } = useInventoryStore()
+  const { inventory, isModalVisible, currentModalItem } = storeToRefs(store)
+  const { saveStorage, moveItems, changeModalVisibility } = useInventoryStore()
 
   const moveItem = (fromIndex, toIndex) => {
     moveItems(fromIndex, toIndex)
@@ -18,7 +18,9 @@ export function useInventory() {
 
   return {
     inventory,
-    removeFromInventory,
-    moveItem
+    isModalVisible,
+    moveItem,
+    changeModalVisibility,
+    currentModalItem
   }
 }
