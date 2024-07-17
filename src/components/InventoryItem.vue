@@ -32,6 +32,6 @@ const props = defineProps({
   }
 })
 
-const { moveItem, changeModalVisibility } = useInventory()
-const { dragStart, drop } = useDragAndDrop(moveItem)
+const { moveItems, changeModalVisibility } = useInventory()
+const { dragStart, drop } = useDragAndDrop(moveItems)
 </script>

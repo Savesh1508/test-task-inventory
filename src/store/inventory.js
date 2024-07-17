@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
+import { v4 as uuidv4 } from 'uuid'
 
 export const useInventoryStore = defineStore('inventoryStore', {
   state: () => {
     const initialState = {
       inventory: Array.from({ length: 25 }, () => ({
+        id: uuidv4(),
         name: null,
         quantity: 0,
         img: null,
@@ -14,18 +16,21 @@ export const useInventoryStore = defineStore('inventoryStore', {
     }
 
     initialState.inventory[0] = {
+      id: uuidv4(),
       name: 'sword',
       quantity: 9,
       img: 'https://picsum.photos/200/200',
       info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque necessitatibus facere doloribus dolorum commodi voluptatum laborum delectus, debitis, eligendi ullam voluptatem voluptate eos? Cumque quas dolorem at maiores deleniti voluptate.'
     }
     initialState.inventory[1] = {
+      id: uuidv4(),
       name: 'shield',
       quantity: 5,
       img: 'https://picsum.photos/300/300',
       info: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque necessitatibus facere doloribus dolorum commodi voluptatum laborum delectus, debitis, eligendi ullam voluptatem voluptate eos? Cumque quas dolorem at maiores deleniti voluptate.'
     }
     initialState.inventory[2] = {
+      id: uuidv4(),
       name: 'knife',
       quantity: 7,
       img: 'https://picsum.photos/400/400',
@@ -44,22 +49,28 @@ export const useInventoryStore = defineStore('inventoryStore', {
     },
 
     // Удаление объекта из массива
-    // removeFromInventory(index, amountToRemove) {
-    //   const currentItem = this.inventory[index]
+    removeFromInventory(id, amountToRemove) {
+      const itemIndex = this.inventory.findIndex((item) => item.id === id)
+      if (itemIndex === -1) {
+        return
+      }
+      const item = this.inventory[itemIndex]
 
-    //   if (!currentItem || currentItem.quantity === 0) {
-    //     return
-    //   }
+      if (amountToRemove >= item.quantity) {
+        this.inventory[itemIndex] = {
+          ...item,
+          name: null,
+          quantity: 0,
+          img: null,
+          info: null
+        }
+      } else {
+        item.quantity -= amountToRemove
+      }
 
-    //   if (currentItem.quantity > amountToRemove) {
-    //     currentItem.quantity -= amountToRemove
-    //   } else {
-    //     currentItem.item = null
-    //     currentItem.quantity = 0
-    //   }
-
-    //   this.saveStorage()
-    // },
+      this.isModalVisible = false
+      this.saveStorage()
+    },
 
     // Для перемещения объекта по массиву
     moveItems(fromIndex, toIndex) {
@@ -76,20 +87,23 @@ export const useInventoryStore = defineStore('inventoryStore', {
     },
 
     changeModalVisibility(index) {
-      if (this.isModalVisible && this.inventory[index].name) {
-        // Модаль открыт + пользователь кликает на объект
-        this.currentModalItem = this.inventory[index]
-      } else if (this.isModalVisible && !this.inventory[index].name) {
-        // Модаль открыт + пользователь кликает на пустую ячейку
-        this.isModalVisible = !this.isModalVisible
-      } else if (!this.isModalVisible && this.inventory[index].name) {
-        // Модаль закрыт + пользователь кликает на объект
-        this.currentModalItem = this.inventory[index]
-        this.isModalVisible = !this.isModalVisible
-      } else {
-        // Модаль закрыт + пользователь кликает на пустую ячейку + остальные ситуации
+      const item = this.inventory[index]
+
+      if (this.isModalVisible && (!item.name || item == this.currentModalItem)) {
+        this.isModalVisible = false
+      } else if (!this.isModalVisible && !item.name) {
         return
+      } else {
+        this.currentModalItem = item
+        this.isModalVisible = true
       }
+
+      this.saveStorage()
+    },
+
+    closeModal() {
+      this.isModalVisible = false
+      this.saveStorage()
     }
   }
 })
