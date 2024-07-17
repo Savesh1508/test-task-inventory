@@ -6,11 +6,8 @@ export function useInventory() {
   const store = useInventoryStore()
 
   const { inventory, isModalVisible, currentModalItem } = storeToRefs(store)
-  const { saveStorage, moveItems, changeModalVisibility } = useInventoryStore()
-
-  const moveItem = (fromIndex, toIndex) => {
-    moveItems(fromIndex, toIndex)
-  }
+  const { saveStorage, moveItems, changeModalVisibility, closeModal, removeFromInventory } =
+    useInventoryStore()
 
   onMounted(() => {
     saveStorage()
@@ -19,8 +16,10 @@ export function useInventory() {
   return {
     inventory,
     isModalVisible,
-    moveItem,
+    moveItems,
     changeModalVisibility,
-    currentModalItem
+    currentModalItem,
+    removeFromInventory,
+    closeModal
   }
 }
