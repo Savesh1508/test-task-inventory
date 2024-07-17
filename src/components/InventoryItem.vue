@@ -1,7 +1,7 @@
 <template>
   <li
-    class="relative bg-primary w-1/5 h-1/5 ring-[1px] ring-b-color"
-    :class="item.name ? 'cursor-pointer hover:bg-[#2f2f2f]' : ''"
+    class="relative duration-500 bg-primary w-1/5 h-1/5 ring-[1px] ring-b-color"
+    :class="item.name ? 'cursor-pointer hover:bg-hover-primary' : ''"
     @click="changeModalVisibility(index)"
     :draggable="item.name ? true : false"
     @dragstart="dragStart(item, index, $event)"
